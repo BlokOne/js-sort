@@ -1,0 +1,14 @@
+.container {
+  width: 358/390 * 100%;
+  margin: 0 auto;
+  @media (min-width: 1440px) {
+    width: 1164/1440 * 100%;
+  }
+}
+* {
+  font-family: Montserrat;
+}
+
+.main {
+  background-color: #f6f9ff;
+}

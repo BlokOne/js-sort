@@ -1,0 +1,43 @@
+.header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    @media (min-width: 1440px) {
+      padding: 29px 0;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    gap: 16px;
+    img {
+      width: 22px;
+      height: 22px;
+    }
+    a {
+      display: none;
+    }
+    @media (min-width: 1440px) {
+      img {
+        display: none;
+      }
+      a {
+        display: block;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #888888;
+        &:visited {
+          color: #888888;
+        }
+      }
+      gap: 40px;
+    }
+  }
+}

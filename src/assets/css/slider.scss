@@ -1,0 +1,115 @@
+.swiper {
+  background: linear-gradient(100.68deg, #5991ff 13.6%, #0050ef 94.69%);
+  padding-bottom: 20px;
+  overflow: hidden;
+
+  position: relative;
+  @media (min-width: 1440px) {
+    padding-bottom: 64px;
+  }
+  &__container {
+    padding-top: 20px;
+
+    @media (min-width: 1440px) {
+      padding-top: 100px;
+    }
+  }
+  &__hr {
+    background: #f6f9ff;
+    height: 16px;
+    width: 100%;
+    @media (min-width: 1440px) {
+      display: none;
+    }
+  }
+
+  &__slides {
+  }
+
+  &__slide {
+  }
+
+  &__dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  &__dot {
+    width: 20px;
+    height: 3px;
+    background: white;
+    @media (min-width: 1440px) {
+      width: 29px;
+      height: 3px;
+    }
+  }
+
+  &__developer {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/developer_mobile.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+    top: 0;
+    left: 0;
+    @media (min-width: 1440px) {
+      background-image: url("../img/developer_desktop.png");
+    }
+  }
+}
+
+.slide {
+  &__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #ffffff;
+    margin-bottom: 21px;
+    @media (min-width: 1440px) {
+      font-size: 40px;
+      line-height: 56px;
+      margin-bottom: 23px;
+    }
+  }
+
+  &__description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ffffff;
+    margin-bottom: 24px;
+    @media (min-width: 1440px) {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 30px;
+      width: 480px;
+    }
+  }
+
+  &__button {
+    color: #0050ef;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    width: 134px;
+    height: 45px;
+    background: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 140px;
+
+    @media (min-width: 1440px) {
+      width: 162px;
+      height: 52px;
+      margin-bottom: 114px;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}

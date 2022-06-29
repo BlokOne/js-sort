@@ -1,0 +1,58 @@
+.offers {
+  &__article {
+  }
+}
+.article {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  @media (min-width: 1440px) {
+    padding: 24px;
+  }
+
+  &__date {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #10b2d0;
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 16px;
+    @media (min-width: 1440px) {
+      font-size: 20px;
+      line-height: 32px;
+    }
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #888888;
+    margin-bottom: 20px;
+    @media (min-width: 1440px) {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__author {
+    padding: 8px 20px;
+    width: 124px;
+    height: 34px;
+    background: rgba(0, 80, 239, 0.06);
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #0050ef;
+  }
+}

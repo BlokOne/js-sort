@@ -1,0 +1,44 @@
+{
+  "name": "test-creative",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+    "deployToGhPages": "npm run build && node deploy.js"
+  },
+  "browserslist": "> 0.25%, not dead",
+  "author": "Kirill Mezhevalov",
+  "license": "ISC",
+  "dependencies": {
+    "swiper": "^6.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^3.5.3",
+    "eslint": "^7.32.0",
+    "eslint-webpack-plugin": "^2.5.4",
+    "file-loader": "^6.0.0",
+    "gh-pages": "^3.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "node-sass": "^4.14.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.8",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  }
+}
