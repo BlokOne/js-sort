@@ -1,22 +1,20 @@
-import { createArticle, pushArticles, createAuthors, pushAuthors } from "./makeComponents"
+import { pushDate } from "./makeComponents"
 
-const category = document.querySelector('.categories__authors'),
+const categoryAuthors = document.querySelector('.categories__authors'),
   authorsSet = document.querySelector(".categories__selected-authors");
 
 let store = [];
-let authors = [];
 
 // Обновляем данные
 const upDate = async () => {
   if (!store.length > 0) {
     await fetchData().then((value) => {
-      const { store, authors } = value;
-      pushArticles(store);
-      pushAuthors(authors);
+      const { store } = value;
+      pushDate(store);
     });
   }
   else {
-
+    pushDate(store);
   }
 }
 
@@ -35,18 +33,12 @@ const fetchData = async () => {
       store.push({
         author: writer,
         description: description,
-        data: publishedAt,
+        date: publishedAt,
         title: title,
         link: url
       })
     })
-    store.map((article) => {
-      const { author } = article;
-      if (authors.indexOf(author) == -1) {
-        authors.push(author);
-      }
-    })
-    return { store, authors }
+    return { store }
   }
   catch (error) {
     console.log(error)
@@ -55,7 +47,21 @@ const fetchData = async () => {
 
 upDate()
 
-category.addEventListener('click', upDate)
+//Добавляем функции в селект и фильтрацию по авторам
+
+function changeClass() {
+  document.querySelector('.categories__selected-authors').classList.toggle('active');
+  document.querySelector('.categories__links').classList.toggle('active');
+  document.querySelector('.body').classList.toggle('active');
+}
+
+
+categoryAuthors.addEventListener('click', (e) => {
+  changeClass();
+
+})
+
+
 
 
 

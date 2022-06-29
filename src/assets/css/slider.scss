@@ -1,4 +1,4 @@
-.swiper {
+.slider {
   background: linear-gradient(100.68deg, #5991ff 13.6%, #0050ef 94.69%);
   padding-bottom: 20px;
   overflow: hidden;
@@ -30,8 +30,12 @@
   }
 
   &__dots {
+    margin-left: (100- (358/390 * 100%))/2;
     display: flex;
     gap: 6px;
+    @media (min-width: 1440px) {
+      margin-left: (100- (1164/1440 * 100%))/2;
+    }
   }
 
   &__dot {
@@ -45,6 +49,7 @@
   }
 
   &__developer {
+    z-index: 10;
     pointer-events: none;
     position: absolute;
     width: 100%;
@@ -102,14 +107,27 @@
     height: 45px;
     background: #ffffff;
     border-radius: 10px;
-    margin-bottom: 140px;
+    margin-bottom: 143px;
 
     @media (min-width: 1440px) {
       width: 162px;
       height: 52px;
-      margin-bottom: 114px;
+      margin-bottom: 117px;
       font-size: 16px;
       line-height: 20px;
     }
   }
+}
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  @media (min-width: 1440px) {
+    width: 29px;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background: #ffffff;
 }

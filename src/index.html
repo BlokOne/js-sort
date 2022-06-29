@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
     <title>Test Creative</title>
   </head>
-  <body>
+  <body class="body">
     <header class="header">
       <div class="header__container container">
         <div class="header__logo">
@@ -25,11 +29,11 @@
       </div>
     </header>
     <main class="main">
-      <section class="swiper">
-        <div class="swiper__hr"></div>
-        <div class="swiper__container container">
-          <div class="swiper__slides">
-            <div class="swiper__slide slide">
+      <section class="slider">
+        <div class="slider__hr"></div>
+        <div class="swiper slider__container container">
+          <div class="swiper-wrapper slider__slides">
+            <div class="swiper-slide slider__slide slide">
               <div class="slide__title">
                 <h2>
                   Как бизнесу сохранять <br />
@@ -44,14 +48,40 @@
               </div>
               <button class="slide__button">Подробнее</button>
             </div>
+            <div class="swiper-slide slider__slide slide">
+              <div class="slide__title">
+                <h2>
+                  Как бизнесу не сохранять <br />
+                  IT-кадры на фоне кризиса
+                </h2>
+              </div>
+              <div class="slide__description">
+                <p>
+                  Инструменты, которые могут использовать компании для удержания
+                  сотрудников
+                </p>
+              </div>
+              <button class="slide__button">Подробнее</button>
+            </div>
+            <div class="swiper-slide slider__slide slide">
+              <div class="slide__title">
+                <h2>
+                  А нужно ли бизнесу сохранять <br />
+                  IT-кадры на фоне кризиса?
+                </h2>
+              </div>
+              <div class="slide__description">
+                <p>
+                  Инструменты, которые могут использовать компании для удержания
+                  сотрудников
+                </p>
+              </div>
+              <button class="slide__button">Подробнее</button>
+            </div>
           </div>
-          <div class="swiper__dots">
-            <div class="swiper__dot"></div>
-            <div class="swiper__dot"></div>
-            <div class="swiper__dot"></div>
-          </div>
-          <div class="swiper__developer"></div>
         </div>
+        <div class="slider__dots swiper-pagination"></div>
+        <div class="slider__developer"></div>
       </section>
       <section class="categories">
         <div class="categories__container container">
@@ -78,18 +108,7 @@
       </section>
       <section class="offers">
         <div class="offers__container container">
-          <div class="offers__articles">
-            <!-- <div class="offers__article article">
-              <div class="article__date">12 июня 2022</div>
-              <div class="article__title">Заголовок статьи</div>
-              <div class="article__description">
-                Краткое описание статьи или ее начало. Может занимать больше
-                трех строк в высоту. В таком случае предложение заканчивается
-                многоточием...
-              </div>
-              <div class="article__author">Иван Иванов</div>
-            </div> -->
-          </div>
+          <div class="offers__articles"></div>
         </div>
       </section>
     </main>

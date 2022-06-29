@@ -1,27 +1,20 @@
-// создаем объекты и их передаем на страницу 
+// создаем объекты и отрисовывем на страницу 
+import moment from "moment";
+import { ISO_8601 } from "moment";
 
 const articlesWrapper = document.querySelector('.offers__articles'),
   listWrapper = document.querySelector(".categories__links");
 
-export function createArticle(article) {
-  const { author, description, data, title, link } = article;
-  const item = document.createElement("div");
-  item.classList.add("offers__article");
-  item.classList.add("article");
-  item.innerHTML = `
-              <a href="${link}" target="_ blank"">
-                <div class="article__date">${data}</div>
-                <div class="article__title">${title}</div>
-                <div class="article__description">
-                  ${description}
-                </div>
-                <div class="article__author">${author}</div>
-              </a>
-  `
-  return item
-}
 
-export function pushArticles(articles, params) {
+export function pushDate(articles, params) {
+  let authors = [];
+  articles.map((article) => {
+    const { author } = article;
+    if (authors.indexOf(author) == -1) {
+      authors.push(author);
+    }
+  })
+  pushAuthors(authors);
   const items = document.createDocumentFragment();
   if (params) {
 
@@ -34,14 +27,35 @@ export function pushArticles(articles, params) {
   articlesWrapper.append(items)
 }
 
-export function createAuthors(author) {
+function createArticle(article) {
+  const { author, description, date, title, link } = article;
+  moment.locale('ru')
+  const dateFormat = moment(date).utc().format('DD MMMM YYYY')
+  const item = document.createElement("div");
+  item.classList.add("offers__article");
+  item.classList.add("article");
+  item.innerHTML = `
+              <a href="${link}" target="_ blank"">
+                <div class="article__date">${dateFormat}</div>
+                <div class="article__title">${title}</div>
+                <div class="article__description">
+                  ${description}
+                </div>
+                <div class="article__author">${author}</div>
+              </a>
+  `
+  return item
+}
+
+
+function createAuthors(author) {
   const item = document.createElement("li");
   item.classList.add("categories__link");
   item.textContent = author;
   return item
 }
 
-export function pushAuthors(authors) {
+function pushAuthors(authors) {
   const items = document.createDocumentFragment();
   authors.forEach((__, index) => {
     const item = createAuthors(authors[index]);
