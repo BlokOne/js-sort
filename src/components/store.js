@@ -1,8 +1,6 @@
 import { pushDate } from "./makeComponents"
 
-const categoryAuthors = document.querySelector('.categories__authors'),
-  authorsSet = document.querySelector(".categories__selected-authors");
-
+const authorsSet = document.querySelector('.category__authors');
 let store = [];
 
 // Обновляем данные
@@ -50,13 +48,13 @@ upDate()
 //Добавляем функции в селект и фильтрацию по авторам
 
 function changeClass() {
-  document.querySelector('.categories__selected-authors').classList.toggle('active');
-  document.querySelector('.categories__links').classList.toggle('active');
-  document.querySelector('.body').classList.toggle('active');
+  authorsSet.classList.toggle('active');
+  document.querySelector('.category__authors-links').classList.toggle('active');
+  // document.querySelector('.body').classList.toggle('active');
 }
 
 
-categoryAuthors.addEventListener('click', (e) => {
+authorsSet.addEventListener('click', (e) => {
   changeClass();
 
 })

@@ -3,7 +3,7 @@ import moment from "moment";
 import { ISO_8601 } from "moment";
 
 const articlesWrapper = document.querySelector('.offers__articles'),
-  listWrapper = document.querySelector(".categories__links");
+  listWrapper = document.querySelector(".category__authors-links");
 
 
 export function pushDate(articles, params) {
