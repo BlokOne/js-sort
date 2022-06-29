@@ -34,11 +34,18 @@
       width: 335px;
     }
   }
+  &__selected-authors.active {
+    img:nth-child(3) {
+      transform: rotate(180deg);
+    }
+  }
 
   &__selected-authors {
+    position: relative;
     display: flex;
     justify-content: space-between;
     img {
+      transition: all 0.7s ease;
       width: 18px;
       height: 18px;
     }
@@ -49,8 +56,34 @@
       }
     }
   }
+
   &__selected-wrap {
     display: flex;
     gap: 10px;
+  }
+  &__links {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    padding: 16px;
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    max-height: 345px;
+    top: 0;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    @media (min-width: 1440px) {
+      max-height: 300px;
+    }
+  }
+  &__links.active {
+    top: 200%;
+    opacity: 1;
+    pointer-events: all;
   }
 }

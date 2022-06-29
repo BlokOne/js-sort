@@ -3,6 +3,12 @@
   top: 0;
   background-color: white;
   z-index: 1000;
+  &__logo {
+    height: 24px;
+    @media (min-width: 1440px) {
+      height: 30px;
+    }
+  }
   &__container {
     display: flex;
     justify-content: space-between;

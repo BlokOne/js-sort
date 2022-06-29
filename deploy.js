@@ -1,5 +1,5 @@
 const ghpages = require('gh-pages');
-const NAME = 'test-creative'; // repo name
+const NAME = 'test'; // repo name
 const repositoryUrl = `https://github.com/BlokOne/${NAME}`; // Адрес репозитория, в который вы хотите сделать деплой, например: https://github.com/likeavenus/portfolio
 
 ghpages.publish('dist', {
