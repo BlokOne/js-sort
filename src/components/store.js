@@ -1,27 +1,16 @@
 import { pushDate } from "./makeComponents";
 import AirDatepicker from 'air-datepicker';
 
+const authorsSet = document.querySelector('.category__authors'),
+  listOfLinks = document.querySelector('.category__authors-links'),
+  body = document.querySelector('.body')
 
-const authorsSet = document.querySelector('.category__authors');
-const listAuthors = document.querySelector('.category__authors-links');
-let store = [];
+const store = [];
 let filteredStore = [];
 let sortByDateFrom = "";
 let sortByDateTo = "";
 
 // Обновляем данные
-const upDate = async () => {
-  if (!store.length) {
-    await fetchData().then((value) => {
-      const { store } = value;
-      pushDate(store);
-    });
-  }
-  else {
-    pushDate(store);
-  }
-}
-
 const fetchData = async () => {
   try {
     const result = await fetch(`https://mocki.io/v1/a5814d24-4e22-49fc-96d1-0e9ae2952afc`)
@@ -48,13 +37,26 @@ const fetchData = async () => {
   }
 }
 
+const upDate = async () => {
+  if (!store.length) {
+    await fetchData().then((value) => {
+      const { store } = value;
+      pushDate(store);
+    });
+  } else {
+    pushDate(store);
+  }
+}
+
+
 upDate()
 
 //Добавляем функции в селект и фильтрацию по авторам
 
 function changeClass() {
   authorsSet.classList.toggle('active');
-  document.querySelector('.category__authors-links').classList.toggle('active');
+  listOfLinks.classList.toggle('active');
+  body.classList.toggle('active');
 }
 
 // Добавляем слушатель на имена 
@@ -106,7 +108,7 @@ function filterByTime() {
 
 new AirDatepicker('.category__date-input-from', {
   autoClose: true,
-  position: 'bottom left ',
+  position: 'bottom left',
   onSelect({ date }) {
     let timeFrom = Date.parse(date)
     sortByDateFrom = timeFrom;

@@ -23,12 +23,6 @@
     }
   }
 
-  &__slides {
-  }
-
-  &__slide {
-  }
-
   &__dots {
     margin-left: (100- (358/390 * 100%))/2;
     display: flex;
@@ -67,6 +61,8 @@
 }
 
 .slide {
+  transition: opacity 1s ease;
+  opacity: 0;
   &__title {
     font-style: normal;
     font-weight: 600;
@@ -130,4 +126,8 @@
 
 .swiper-pagination-bullet-active {
   background: #ffffff;
+}
+
+.swiper-slide-active {
+  opacity: 1;
 }

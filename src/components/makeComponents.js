@@ -28,17 +28,17 @@ function createArticle(article) {
   const { author, description, date, title, link } = article;
   moment.locale('ru')
   const dateFormat = moment(date).utc().format('DD MMMM YYYY')
-  const item = document.createElement("div");
+  const item = document.createElement("article");
   item.classList.add("offers__article");
   item.classList.add("article");
   item.innerHTML = `
               <a href="${link}" target="blank"">
-                <div class="article__date">${dateFormat}</div>
-                <div class="article__title">${title}</div>
-                <div class="article__description">
+                <p class="article__date">${dateFormat}</p>
+                <h3 class="article__title">${title}</h3>
+                <p class="article__description">
                   ${description}
-                </div>
-                <div class="article__author">${author}</div>
+                </p>
+                <p class="article__author">${author}</p>
               </a>
   `
   return item
@@ -53,15 +53,17 @@ function createAuthors(author) {
 }
 
 function pushAuthors(authors) {
-  const items = document.createDocumentFragment();
-  const item = document.createElement("li");
-  item.classList.add("categories__link");
-  item.textContent = "Все авторы";
-  items.append(item);
-  authors.forEach((__, index) => {
-    const item = createAuthors(authors[index]);
+  if (!listWrapper.innerHTML) {
+    const items = document.createDocumentFragment();
+    const item = document.createElement("li");
+    item.classList.add("categories__link");
+    item.textContent = "Все авторы";
     items.append(item);
-  })
-  listWrapper.append(items)
+    authors.forEach((__, index) => {
+      const item = createAuthors(authors[index]);
+      items.append(item);
+    })
+    listWrapper.append(items)
+  }
 }
 

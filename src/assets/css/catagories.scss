@@ -110,6 +110,9 @@
     display: flex;
     justify-content: space-between;
     position: relative;
+    input {
+      text-align: center;
+    }
   }
 
   &__date-from {
