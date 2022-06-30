@@ -37,6 +37,7 @@
 
 .category {
   &__date-input-from {
+    cursor: pointer;
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
@@ -44,6 +45,7 @@
     width: 100%;
   }
   &__date-input-to {
+    cursor: pointer;
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
@@ -51,6 +53,7 @@
     width: 100%;
   }
   &__authors {
+    cursor: pointer;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -78,6 +81,7 @@
   }
 
   &__authors-links {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     opacity: 0;
     pointer-events: none;
     z-index: 2;
@@ -132,6 +136,7 @@
   &__date-to {
     width: 144/326 * 100%;
     display: flex;
+
     span {
       margin-right: 10px;
     }

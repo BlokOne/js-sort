@@ -18,6 +18,16 @@
     }
   }
 
+  &__phone {
+    display: flex;
+    align-items: center;
+  }
+
+  &__mail {
+    display: flex;
+    align-items: center;
+  }
+
   &__contacts {
     display: flex;
     gap: 16px;
@@ -25,14 +35,14 @@
       width: 22px;
       height: 22px;
     }
-    a {
+    p {
       display: none;
     }
     @media (min-width: 1440px) {
       img {
         display: none;
       }
-      a {
+      p {
         display: block;
         font-style: normal;
         font-weight: 500;

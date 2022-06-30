@@ -1,32 +1,26 @@
 // создаем объекты и отрисовывем на страницу 
 import moment from "moment";
-import { ISO_8601 } from "moment";
+
 
 const articlesWrapper = document.querySelector('.offers__articles'),
   listWrapper = document.querySelector(".category__authors-links");
 
 
-export function pushDate(articles, params) {
-  console.log("hi")
-  console.log(articles)
+export function pushDate(articles) {
   articlesWrapper.innerHTML = "";
-  let authors = [];
-  articles.map((article) => {
+  const authors = [];
+  articles.forEach((article) => {
     const { author } = article;
-    if (authors.indexOf(author) == -1) {
+    if (authors.indexOf(author) === -1) {
       authors.push(author);
     }
   })
   pushAuthors(authors);
   const items = document.createDocumentFragment();
-  if (params) {
-
-  } else {
-    articles.forEach((__, index) => {
-      const item = createArticle(articles[index]);
-      items.append(item);
-    })
-  }
+  articles.forEach((__, index) => {
+    const item = createArticle(articles[index]);
+    items.append(item);
+  })
   articlesWrapper.append(items)
 }
 
@@ -38,7 +32,7 @@ function createArticle(article) {
   item.classList.add("offers__article");
   item.classList.add("article");
   item.innerHTML = `
-              <a href="${link}" target="_ blank"">
+              <a href="${link}" target="blank"">
                 <div class="article__date">${dateFormat}</div>
                 <div class="article__title">${title}</div>
                 <div class="article__description">

@@ -1,15 +1,17 @@
-import { pushDate } from "./makeComponents"
+import { pushDate } from "./makeComponents";
+import AirDatepicker from 'air-datepicker';
+
 
 const authorsSet = document.querySelector('.category__authors');
 const listAuthors = document.querySelector('.category__authors-links');
 let store = [];
 let filteredStore = [];
-let storeFilteredDateAndName = [];
-let nameInFilter = "";
+let sortByDateFrom = "";
+let sortByDateTo = "";
 
 // Обновляем данные
 const upDate = async () => {
-  if (!store.length > 0) {
+  if (!store.length) {
     await fetchData().then((value) => {
       const { store } = value;
       pushDate(store);
@@ -21,7 +23,6 @@ const upDate = async () => {
 }
 
 const fetchData = async () => {
-
   try {
     const result = await fetch(`https://mocki.io/v1/a5814d24-4e22-49fc-96d1-0e9ae2952afc`)
     const data = await result.json();
@@ -29,7 +30,7 @@ const fetchData = async () => {
     articles.map((article) => {
       const { author, description, publishedAt, title, url } = article;
       let writer = author;
-      if (writer === null) {
+      if (!writer) {
         writer = "Unknown";
       }
       store.push({
@@ -40,7 +41,6 @@ const fetchData = async () => {
         link: url
       })
     })
-    console.log(store)
     return { store }
   }
   catch (error) {
@@ -55,45 +55,74 @@ upDate()
 function changeClass() {
   authorsSet.classList.toggle('active');
   document.querySelector('.category__authors-links').classList.toggle('active');
-  // document.querySelector('.body').classList.toggle('active');
 }
-// changeClass();
-// filterName("Unknown");
 
-
+// Добавляем слушатель на имена 
 authorsSet.addEventListener('click', pickName)
-
 function pickName(e) {
   changeClass()
   if (e.target.classList.contains('categories__link')) {
-    filterName(e.target.innerText)
+    filterByName(e.target.innerText)
+    document.getElementById("name-author").innerText = `${e.target.innerText}`
   }
 }
+
+
 // Фильтрация по имени 
 
-function filterName(name) {
-  if (name == 'Все авторы') {
+function filterByName(name) {
+  if (name === 'Все авторы') {
     filteredStore = [];
-    filteredStore = store;
-    pushDate(filteredStore);
+    filterByTime()
   } else {
-    filteredStore = []
     filteredStore = store.filter(article => article.author === name)
-    pushDate(filteredStore);
-    nameInFilter = name;
+    filterByTime()
   }
-
-  // if (filteredStore.length == 0) {
-
-  // } else {
-  //   let storeFilteredDateAndName = filteredStore.filter(article => article.author === name)
-  //   pushDate(storeFilteredDateAndName);
-  // }
-
 }
 
+// Фильтрация по времени (выполняем всегда(либо время указано, либо от 1970года до сегодня))
 
+function filterByTime() {
+  let from = sortByDateFrom;
+  let to = sortByDateTo;
+  if (from === "") {
+    from = 1
+  }
+  if (to === "") {
+    to = Date.parse(new Date())
+  }
+  if (!filteredStore.length) {
+    let FilteredFrom = store.filter(article => Date.parse(new Date(article.date)) > from)
+    let FilteredFromAndTo = FilteredFrom.filter(article => Date.parse(new Date(article.date)) < to)
+    pushDate(FilteredFromAndTo)
+  } else if (filteredStore.length) {
+    let FilteredFrom = filteredStore.filter(article => Date.parse(new Date(article.date)) > from)
+    let FilteredFromAndTo = FilteredFrom.filter(article => Date.parse(new Date(article.date)) < to)
+    pushDate(FilteredFromAndTo)
+  }
+}
 
+// Создаем два календаря, откуда и будем получать даты
+
+new AirDatepicker('.category__date-input-from', {
+  autoClose: true,
+  position: 'bottom left ',
+  onSelect({ date }) {
+    let timeFrom = Date.parse(date)
+    sortByDateFrom = timeFrom;
+    filterByTime()
+  }
+})
+
+new AirDatepicker('.category__date-input-to', {
+  autoClose: true,
+  position: 'bottom right',
+  onSelect({ date }) {
+    let timeTo = Date.parse(date)
+    sortByDateTo = timeTo;
+    filterByTime()
+  }
+})
 
 
 

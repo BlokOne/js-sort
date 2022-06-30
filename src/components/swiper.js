@@ -7,6 +7,8 @@ export default function SwiperHead() {
     loop: false,
     pagination: {
       el: '.swiper-pagination',
-    }
+      preventInteractionOnTransition: true
+    },
+
   });
 }
