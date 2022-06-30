@@ -1,7 +1,11 @@
 import { pushDate } from "./makeComponents"
 
 const authorsSet = document.querySelector('.category__authors');
+const listAuthors = document.querySelector('.category__authors-links');
 let store = [];
+let filteredStore = [];
+let storeFilteredDateAndName = [];
+let nameInFilter = "";
 
 // Обновляем данные
 const upDate = async () => {
@@ -36,6 +40,7 @@ const fetchData = async () => {
         link: url
       })
     })
+    console.log(store)
     return { store }
   }
   catch (error) {
@@ -52,12 +57,40 @@ function changeClass() {
   document.querySelector('.category__authors-links').classList.toggle('active');
   // document.querySelector('.body').classList.toggle('active');
 }
+// changeClass();
+// filterName("Unknown");
 
 
-authorsSet.addEventListener('click', (e) => {
-  changeClass();
+authorsSet.addEventListener('click', pickName)
 
-})
+function pickName(e) {
+  changeClass()
+  if (e.target.classList.contains('categories__link')) {
+    filterName(e.target.innerText)
+  }
+}
+// Фильтрация по имени 
+
+function filterName(name) {
+  if (name == 'Все авторы') {
+    filteredStore = [];
+    filteredStore = store;
+    pushDate(filteredStore);
+  } else {
+    filteredStore = []
+    filteredStore = store.filter(article => article.author === name)
+    pushDate(filteredStore);
+    nameInFilter = name;
+  }
+
+  // if (filteredStore.length == 0) {
+
+  // } else {
+  //   let storeFilteredDateAndName = filteredStore.filter(article => article.author === name)
+  //   pushDate(storeFilteredDateAndName);
+  // }
+
+}
 
 
 

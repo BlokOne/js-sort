@@ -7,6 +7,9 @@ const articlesWrapper = document.querySelector('.offers__articles'),
 
 
 export function pushDate(articles, params) {
+  console.log("hi")
+  console.log(articles)
+  articlesWrapper.innerHTML = "";
   let authors = [];
   articles.map((article) => {
     const { author } = article;
@@ -57,6 +60,10 @@ function createAuthors(author) {
 
 function pushAuthors(authors) {
   const items = document.createDocumentFragment();
+  const item = document.createElement("li");
+  item.classList.add("categories__link");
+  item.textContent = "Все авторы";
+  items.append(item);
   authors.forEach((__, index) => {
     const item = createAuthors(authors[index]);
     items.append(item);
