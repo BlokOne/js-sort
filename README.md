@@ -1,4 +1,4 @@
-https://blokone.github.io/test/
+https://blokone.github.io/js-sort/
 
 Предпочтительный стек: HTML5 + SCSS + Vanilla JS, при желании можно использовать фреймворк.
 Требования к верстке:
