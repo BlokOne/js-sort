@@ -1,7 +1,6 @@
 https://blokone.github.io/test/
 
 Предпочтительный стек: HTML5 + SCSS + Vanilla JS, при желании можно использовать фреймворк.
-Макет: https://www.figma.com/file/06yGqefmmaDyMTsEcbJiBH/Test-task-for-Junior-frontend-developer?node-id=0%3A1
 Требования к верстке:
 Валидность, кроссбаузерность (IE11+)
 Адаптивность до 320px по ширине экрана
